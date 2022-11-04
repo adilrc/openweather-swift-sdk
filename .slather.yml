@@ -1,0 +1,7 @@
+coverage_service: cobertura_xml
+xcodeproj: ./openweather-swift-sdk.xcodeproj
+scheme: openweather-swift-sdk-Package
+build_directory: ./DerivedData/
+source_directory: openweather-swift-sdk
+output_directory: ./CodeCoverage/
+binary_basename: openweather-swift-sdk
