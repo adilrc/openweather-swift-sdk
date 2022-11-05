@@ -7,13 +7,19 @@
 
 import Foundation
 
-actor OWRequestHandler {
+protocol OWRequestPerforming {
+    func perform<Object: Decodable>(_ request: URLRequest) async throws -> Object
+}
+
+actor OWRequestHandler: OWRequestPerforming {
     static let shared = OWRequestHandler()
     
     /// Performs a request and decodes it assuming the response's data has JSON content.
     /// - Parameter request: The input request.
     /// - Returns: An object decoded from a JSON.
     func perform<Object: Decodable>(_ request: URLRequest) async throws -> Object {
+        logger.debug("Calling URL: \(request.url!)")
+        
         let (data, response) = try await URLSession.shared.data(for: request)
         guard let httpResponse = response as? HTTPURLResponse,
               (200..<400).contains(httpResponse.statusCode) else {

@@ -17,7 +17,7 @@ public struct OWSimpleWeatherResponse: Codable {
     let date: Date
 
     /// Container for the coordinates of the requested location.
-    let coordinates: OWCoordinates
+    var coordinates: OWCoordinates?
     
     /// Container for the weather conditions summaries of the day for the requested location.
     ///
@@ -45,12 +45,12 @@ public struct OWSimpleWeatherResponse: Codable {
     var context: OWContext?
     
     /// The timezone of the requested location.
-    let timeZone: TimeZone
+    var timeZone: TimeZone?
     
     /// The response status code.
     ///
     /// - Note: Unlike for the bulk weather response, the Open Weather API provides here an `Int` for the response code instead of a `String`
-    let responseCode: Int
+    var responseCode: Int?
     
     /// Message used for error descriptions.
     var message: String?
@@ -69,15 +69,15 @@ public struct OWSimpleWeatherResponse: Codable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
-        let responseCode = (try? values.decode(Int.self, forKey: .responseCode)) ?? -1
-                         
-        if responseCode != 200 {
+        let responseCode = try? values.decode(Int.self, forKey: .responseCode)
+        
+        if let responseCode = try? values.decode(Int.self, forKey: .responseCode), responseCode != 200 {
             // If response code is different than 200, it's an error
             let errorMessage = try? values.decode(String.self, forKey: .message)
             throw OWError(errorCode: responseCode, message: errorMessage)
         }
         
-        self.coordinates = try values.decode(OWCoordinates.self,
+        self.coordinates = try? values.decode(OWCoordinates.self,
                                              forKey: .coordinates)
         
         // Decoding date
@@ -107,9 +107,9 @@ public struct OWSimpleWeatherResponse: Codable {
                                           forKey: .context)
         
         
-        let timeZoneShift = try values.decode(Int.self,
+        let timeZoneShift = try? values.decode(Int.self,
                                           forKey: .timeZone)
-        self.timeZone = .init(secondsFromGMT: timeZoneShift)!
+        self.timeZone = timeZoneShift.flatMap { .init(secondsFromGMT: $0) }
         
         self.responseCode = responseCode
         self.message = try? values.decode(String.self,
