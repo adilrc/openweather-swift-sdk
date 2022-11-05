@@ -27,17 +27,8 @@ enum OWIconKey: String, Codable {
     case snowNight = "13n"
     case mistNight = "50n"
     
-    var isDay: Bool {
-        switch self {
-        case .clearSkyDay, .fewCloudsDay, .scatteredCloudsDay, .brokenCloudsDay, .showerRainDay, .rainDay, .thunderstormDay, .snowDay, .mistDay:
-            return true
-        default:
-            return false
-        }
-    }
-    
-    var isNight: Bool {
-        !isDay
+    var isDayIcon: Bool {
+        return self.rawValue.contains("d")
     }
 }
 

@@ -31,7 +31,7 @@ extension OpenWeather: OWWeatherProvider {
         let url = try OWURL.weather(configuration: urlConfiguration).url
         let urlRequest = URLRequest(url: url)
         
-        return try await requestHandler.perform(urlRequest)
+        return try await requestHandler.perform(urlRequest, urlSession: URLSession.shared)
     }
     
     /// Provides a five days forecast for the specified location with details every 3 hours.
@@ -44,6 +44,6 @@ extension OpenWeather: OWWeatherProvider {
         let url = try OWURL.forecast(configuration: urlConfiguration).url
         let urlRequest = URLRequest(url: url)
         
-        return try await requestHandler.perform(urlRequest)
+        return try await requestHandler.perform(urlRequest, urlSession: URLSession.shared)
     }    
 }

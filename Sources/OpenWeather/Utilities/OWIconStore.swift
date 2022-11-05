@@ -42,7 +42,7 @@ enum OWIconStore {
     static let dust: OWIcon = OWIcon.multiColorSystemSymbol("sun.dust", accessibilityDescription: "Dust")!
     
     /// 􀇣 Smoke
-    static let clouds: OWIcon = OWIcon.multiColorSystemSymbol("smoke.fill", accessibilityDescription: "Smoke")!
+    static let clouds: OWIcon = OWIcon.multiColorSystemSymbol("smoke.fill", accessibilityDescription: "Clouds")!
 
     /// 􀇤 Wind
     static let squalls: OWIcon = OWIcon.multiColorSystemSymbol("wind", accessibilityDescription: "Wind")!

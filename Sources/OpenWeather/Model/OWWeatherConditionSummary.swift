@@ -46,7 +46,7 @@ extension OWWeatherConditionSummary: OWIconProvider {
             case .sleet, .lightShowerSleet, .showerSleet, .lightRainAndSnow, .rainAndSnow:
                 return OWIconStore.sleet
             case .mist, .haze, .fog, .smoke:
-                return iconID.isDay ? OWIconStore.hazeDay : OWIconStore.hazeNight
+                return iconID.isDayIcon ? OWIconStore.hazeDay : OWIconStore.hazeNight
             case .sandDustWhirls, .sand, .dust, .volcanicAsh:
                 return OWIconStore.dust
             case .squalls:
@@ -54,9 +54,9 @@ extension OWWeatherConditionSummary: OWIconProvider {
             case .tornado:
                 return OWIconStore.tornado
             case .clearSky:
-                return iconID.isDay ? OWIconStore.clearSkyDay : OWIconStore.clearSkyNight
+                return iconID.isDayIcon ? OWIconStore.clearSkyDay : OWIconStore.clearSkyNight
             case .fewClouds, .scatteredClouds:
-                return iconID.isDay ? OWIconStore.fewCloudsDay : OWIconStore.fewCloudsNight
+                return iconID.isDayIcon ? OWIconStore.fewCloudsDay : OWIconStore.fewCloudsNight
             case .brokenClouds, .overcastClouds:
                 return OWIconStore.clouds
             }

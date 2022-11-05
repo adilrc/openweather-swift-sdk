@@ -20,7 +20,7 @@ actor OWRequestPerformerMock: OWRequestPerforming {
         self.mode = mode
     }
     
-    func perform<Object>(_ request: URLRequest) async throws -> Object where Object : Decodable {
+    func perform<Object>(_ request: URLRequest, urlSession: URLSession = URLSession.shared) async throws -> Object where Object : Decodable {
         switch mode {
         case .simple:
             return OWResponsesMock.simpleWeatherResponseLondonObject as! Object
