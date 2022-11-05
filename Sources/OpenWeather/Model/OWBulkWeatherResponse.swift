@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OWBulkWeatherResponse: Codable {
+public struct OWBulkWeatherResponse: Codable {
 
     /// The list of weather response.
     let list: [OWSimpleWeatherResponse]
