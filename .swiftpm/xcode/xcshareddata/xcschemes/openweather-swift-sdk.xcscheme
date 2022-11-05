@@ -14,23 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "openweather-swift-sdk"
-               BuildableName = "openweather-swift-sdk"
-               BlueprintName = "openweather-swift-sdk"
-               ReferencedContainer = "container:">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "openweather-swift-sdkTests"
-               BuildableName = "openweather-swift-sdkTests"
-               BlueprintName = "openweather-swift-sdkTests"
+               BlueprintIdentifier = "OpenWeather"
+               BuildableName = "OpenWeather"
+               BlueprintName = "OpenWeather"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,12 +30,13 @@
       codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "openweather-swift-sdkTests"
-               BuildableName = "openweather-swift-sdkTests"
-               BlueprintName = "openweather-swift-sdkTests"
+               BlueprintIdentifier = "OpenWeatherTests"
+               BuildableName = "OpenWeatherTests"
+               BlueprintName = "OpenWeatherTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -75,9 +62,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "openweather-swift-sdk"
-            BuildableName = "openweather-swift-sdk"
-            BlueprintName = "openweather-swift-sdk"
+            BlueprintIdentifier = "OpenWeather"
+            BuildableName = "OpenWeather"
+            BlueprintName = "OpenWeather"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>
