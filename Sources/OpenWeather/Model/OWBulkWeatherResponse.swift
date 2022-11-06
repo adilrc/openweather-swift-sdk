@@ -15,7 +15,7 @@ public struct OWBulkWeatherResponse: Codable {
   /// Response status
   ///
   /// - Note: Unlike for the simple weather response, the Open Weather API provides here a `String` for the response code instead of an `Int`
-  private let responseCode: String
+  let responseCode: String
 
   /// Message used for error descriptions.
   private var message: String?
