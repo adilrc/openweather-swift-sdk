@@ -18,7 +18,6 @@ final class OWWeatherConditionSummaryTests: XCTestCase {
         #if canImport(AppKit)
         let expectedIcon = NSImage(systemSymbolName: "smoke.fill", accessibilityDescription: "Clouds")?.withSymbolConfiguration(.preferringMulticolor())
         
-        try XCTAssertEqual(summary.weatherIcon.accessibilityDescription, "Clouds")
         try XCTAssertEqual(summary.weatherIcon.tiffRepresentation, expectedIcon?.tiffRepresentation)
         #elseif canImport(UIKit)
         let expectedIcon = UIImage(systemName: "smoke.fill")?.applyingSymbolConfiguration(.preferringMulticolor())

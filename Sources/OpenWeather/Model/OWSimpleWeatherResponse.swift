@@ -50,7 +50,7 @@ public struct OWSimpleWeatherResponse: Codable {
   /// The response status code.
   ///
   /// - Note: Unlike for the bulk weather response, the Open Weather API provides here an `Int` for the response code instead of a `String`
-  private var responseCode: Int?
+  var responseCode: Int?
 
   /// Message used for error descriptions.
   private var message: String?
