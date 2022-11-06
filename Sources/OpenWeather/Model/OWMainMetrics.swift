@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OWMainMetrics: Codable {
+public struct OWMainMetrics: Codable {
 
   /// Current temperature.
   ///
@@ -15,7 +15,7 @@ struct OWMainMetrics: Codable {
   /// - Default: Kelvin
   /// - Metric: Celcius
   /// - Imperial: Fahrenheit
-  let temperature: Double
+  public let temperature: Double
 
   /// Feels like temperature.
   ///
@@ -23,7 +23,7 @@ struct OWMainMetrics: Codable {
   /// - Default: Kelvin
   /// - Metric: Celcius
   /// - Imperial: Fahrenheit
-  var feelsLike: Double?
+  public var feelsLike: Double?
 
   /// Minimum temperature at the moment. This is minimal currently observed temperature (within large megalopolises and urban areas).
   ///
@@ -31,7 +31,7 @@ struct OWMainMetrics: Codable {
   /// - Default: Kelvin
   /// - Metric: Celcius
   /// - Imperial: Fahrenheit
-  var tempMin: Double?
+  public var tempMin: Double?
 
   /// Maximum temperature at the moment. This is maximal currently observed temperature (within large megalopolises and urban areas).
   ///
@@ -39,27 +39,27 @@ struct OWMainMetrics: Codable {
   /// - Default: Kelvin
   /// - Metric: Celcius
   /// - Imperial: Fahrenheit
-  var tempMax: Double?
+  public var tempMax: Double?
 
   /// Humidity.
   ///
   /// Unit: %
-  var humidity: Int?
+  public var humidity: Int?
 
   /// Atmospheric pressure on the sea level (if there is no or grnd_level data).
   ///
   /// Unit: hPa
-  var pressure: Double?
+  public var pressure: Double?
 
   /// Atmospheric pressure on the sea level.
   ///
   /// Unit: hPa
-  var seaLevelPressure: Int?
+  public var seaLevelPressure: Int?
 
   /// Atmospheric pressure on the ground level.
   ///
   /// Unit: hPa
-  var groundLevelPressure: Int?
+  public var groundLevelPressure: Int?
 
   enum CodingKeys: String, CodingKey {
     case temperature = "temp"

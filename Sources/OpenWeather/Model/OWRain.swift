@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct OWRain: Codable {
+public struct OWRain: Codable {
 
   /// Rain volume for the last hour
   ///
   /// Unit: mm
-  let lastHourVolume: Double
+  public let lastHourVolume: Double
 
   /// Rain volume for the last 3 hours
   ///
   /// Unit: mm
-  let lastThreeHourVolume: Double
+  public let lastThreeHourVolume: Double
 
   enum CodingKeys: String, CodingKey {
     case lastHourVolume = "1h"

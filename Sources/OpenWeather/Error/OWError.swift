@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OWError: LocalizedError {
+public enum OWError: LocalizedError {
 
   /// Custom error if the Open Weather API doesn't provide basic weather data for a given location.
   /// This error can be represented by error code 204.
@@ -28,6 +28,8 @@ enum OWError: LocalizedError {
   /// Please consider upgrading to a subscription plan that meets your needs or reduce the number of API calls in accordance with the limits.
   case tooManyRequests
 
+  case noIconFound
+  
   /// In case you receive one of the following errors 500, 502, 503 or 504 please contact us for assistance.
   case unknown(code: Int, message: String?)
 
@@ -46,7 +48,7 @@ enum OWError: LocalizedError {
     }
   }
 
-  var errorDescription: String? {
+  public var errorDescription: String? {
     switch self {
     case .noContent:
       return "The API returned successfully but no weather data was returned for the request."
@@ -56,12 +58,14 @@ enum OWError: LocalizedError {
       return "The requested ressource was not found."
     case .tooManyRequests:
       return "The number of requests is over the limits of your subscription."
+    case .noIconFound:
+      return "Unable to provide an icon for the requested weather."
     case let .unknown(code, message):
       return "Error code \(code): \(message ?? "Unknown Error")"
     }
   }
 
-  var recoverySuggestion: String? {
+  public var recoverySuggestion: String? {
     switch self {
     case .noContent:
       return "Please make sure the requested location is accurate."
@@ -73,6 +77,8 @@ enum OWError: LocalizedError {
     case .tooManyRequests:
       return
         "Please consider upgrading to a subscription plan that meets your needs or reduce the number of API calls in accordance with the limits."
+    case .noIconFound:
+      return nil
     case .unknown:
       return
         "Please contact OpenWeather for assistance. Please enclose an example of your API request that receives this error into your email."

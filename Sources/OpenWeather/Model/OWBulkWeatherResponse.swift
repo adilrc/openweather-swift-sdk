@@ -10,15 +10,15 @@ import Foundation
 public struct OWBulkWeatherResponse: Codable {
 
   /// The list of weather response.
-  let list: [OWSimpleWeatherResponse]
+  public let list: [OWSimpleWeatherResponse]
 
   /// Response status
   ///
   /// - Note: Unlike for the simple weather response, the Open Weather API provides here a `String` for the response code instead of an `Int`
-  let responseCode: String
+  private let responseCode: String
 
   /// Message used for error descriptions.
-  var message: String?
+  private var message: String?
 
   enum CodingKeys: String, CodingKey {
     case list, message

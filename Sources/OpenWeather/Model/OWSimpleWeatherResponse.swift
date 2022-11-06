@@ -14,46 +14,46 @@ import Foundation
 public struct OWSimpleWeatherResponse: Codable {
 
   /// Time of data calculation.
-  let date: Date
+  public let date: Date
 
   /// Container for the coordinates of the requested location.
-  var coordinates: OWCoordinates?
+  public var coordinates: OWCoordinates?
 
   /// Container for the weather conditions summaries of the day for the requested location.
   ///
   /// - Note: It is possible to meet more than one weather condition for a requested location. The first weather condition in API respond is primary.
-  let summaries: [OWWeatherConditionSummary]
+  public let summaries: [OWWeatherConditionSummary]
 
   /// Container  for the main weather metrics for the location (temperature, humidity, pressure, etc...).
-  let mainMetrics: OWMainMetrics
+  public let mainMetrics: OWMainMetrics
 
   /// Visibility. The maximum value of the visibility is 10km
   ///
   /// Unit: meter
-  var visibility: Int?
+  public var visibility: Int?
 
   /// Container for wind velocity information.
-  var wind: OWWind?
+  public var wind: OWWind?
 
   /// Container for rain falls forecasts.
-  var rain: OWRain?
+  public var rain: OWRain?
 
   /// Container for clouds coverage information.
-  var clouds: OWClouds?
+  public var clouds: OWClouds?
 
   /// The context of the requested location (country, sunrise, sunset, etc..).
-  var context: OWContext?
+  public var context: OWContext?
 
   /// The timezone of the requested location.
-  var timeZone: TimeZone?
+  public var timeZone: TimeZone?
 
   /// The response status code.
   ///
   /// - Note: Unlike for the bulk weather response, the Open Weather API provides here an `Int` for the response code instead of a `String`
-  var responseCode: Int?
+  private var responseCode: Int?
 
   /// Message used for error descriptions.
-  var message: String?
+  private var message: String?
 
   enum CodingKeys: String, CodingKey {
     case visibility, wind, rain, clouds, message

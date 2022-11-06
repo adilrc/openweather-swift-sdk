@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct OWWind: Codable {
+public struct OWWind: Codable {
 
   /// The wind speed.
   ///
@@ -15,12 +15,12 @@ struct OWWind: Codable {
   /// - Default: meter/sec
   /// - Metric: meter/sec
   /// - Imperial: miles/hour
-  var speed: Double?
+  public var speed: Double?
 
   /// The wind direction.
   ///
   /// Unit: degrees
-  var direction: Int?
+  public var direction: Int?
 
   /// The wind gust.
   ///
@@ -28,7 +28,7 @@ struct OWWind: Codable {
   /// - Default: meter/sec
   /// - Metric: meter/sec
   /// - Imperial: miles/hour
-  var gust: Double?
+  public var gust: Double?
 
   enum CodingKeys: String, CodingKey {
     case speed, gust
