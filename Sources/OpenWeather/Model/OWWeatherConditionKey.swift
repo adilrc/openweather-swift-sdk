@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OWWeatherConditionKey: Int, Codable {
+public enum OWWeatherConditionKey: Int, Codable {
   /// Group 2xx: Thunderstorm
   case thunderstormWithLightRain = 200
   case thunderstormWithRain = 201

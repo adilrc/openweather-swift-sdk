@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct OWContext: Codable {
+public struct OWContext: Codable {
 
   /// ISO 3166 country codes (GB, JP etc.).
-  let country: String
+  public let country: String
 
   /// Sunrise time.
-  let sunrise: Date
+  public let sunrise: Date
 
   /// Sunset time.
-  let sunset: Date
+  public let sunset: Date
 }

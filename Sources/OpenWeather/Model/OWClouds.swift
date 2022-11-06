@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct OWClouds: Codable {
+public struct OWClouds: Codable {
 
   /// Cloudiness
   /// Unit: %
-  let cloudiness: Int
+  public let cloudiness: Int
 
   enum CodingKeys: String, CodingKey {
     case cloudiness = "all"

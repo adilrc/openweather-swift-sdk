@@ -9,74 +9,132 @@ import Foundation
 
 enum OWIconStore {
   /// 􀇓 Thunderstorm
-  static let thunderstorm: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.bolt.fill", accessibilityDescription: "Thunderstorm")!
+  case thunderstorm
 
   /// 􀇟 Thunderstorm Rain
-  static let thunderstormRain: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.bolt.rain.fill", accessibilityDescription: "Thunderstorm Rain")!
+  case thunderstormRain
 
   /// 􀇅 Drizzle
-  static let drizzle: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.drizzle.fill", accessibilityDescription: "Drizzle")!
+  case drizzle
 
   /// 􀇇 Rain
-  static let rain: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.rain.fill", accessibilityDescription: "Rain")!
+  case rain
 
   /// 􀇉 Heavy rain
-  static let heavyRain: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.heavyrain.fill", accessibilityDescription: "Heavy Rain")!
+  case heavyRain
 
   /// 􀇏 Snow
-  static let snow: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.snow.fill", accessibilityDescription: "Snow")!
+  case snow
 
   /// 􀇑 Sleet
-  static let sleet: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.hail.fill", accessibilityDescription: "Sleet")!
+  case sleet
 
   /// 􀆸 Haze day
-  static let hazeDay: OWIcon = OWIcon.multiColorSystemSymbol(
-    "sun.haze.fill", accessibilityDescription: "Haze")!
+  case hazeDay
 
   /// 􁑰 Haze night
-  static let hazeNight: OWIcon = OWIcon.multiColorSystemSymbol(
-    "moon.haze.fill", accessibilityDescription: "Haze")!
+  case hazeNight
 
   /// 􀇋 Clouds fog
-  static let fog: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.fog.fill", accessibilityDescription: "Fog")!
+  case fog
 
   /// 􀆶 Dust
-  static let dust: OWIcon = OWIcon.multiColorSystemSymbol(
-    "sun.dust", accessibilityDescription: "Dust")!
+  case dust
 
   /// 􀇣 Smoke
-  static let clouds: OWIcon = OWIcon.multiColorSystemSymbol(
-    "smoke.fill", accessibilityDescription: "Clouds")!
+  case clouds
 
   /// 􀇤 Wind
-  static let squalls: OWIcon = OWIcon.multiColorSystemSymbol(
-    "wind", accessibilityDescription: "Wind")!
+  case squalls
 
   /// 􀇧 Tornado
-  static let tornado: OWIcon = OWIcon.multiColorSystemSymbol(
-    "tornado", accessibilityDescription: "Tornado")!
+  case tornado
 
   /// 􀆮 Clear sky day
-  static let clearSkyDay: OWIcon = OWIcon.multiColorSystemSymbol(
-    "sun.max.fill", accessibilityDescription: "Clear Sky")!
+  case clearSkyDay
 
   /// 􀆺 Clear sky night
-  static let clearSkyNight: OWIcon = OWIcon.multiColorSystemSymbol(
-    "moon.fill", accessibilityDescription: "Clear Sky")!
+  case clearSkyNight
 
   /// 􀇕 Few clouds day
-  static let fewCloudsDay: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.sun.fill", accessibilityDescription: "Few Clouds")!
+  case fewCloudsDay
 
   /// 􀇛 Few clouds night
-  static let fewCloudsNight: OWIcon = OWIcon.multiColorSystemSymbol(
-    "cloud.moon.fill", accessibilityDescription: "Few Clouds")!
+  case fewCloudsNight
+  
+  
+  var accessibilityDescription: String {
+    switch self {
+    case .thunderstorm:
+      return "Thunderstorm"
+    case .thunderstormRain:
+      return "Thunderstorm Rain"
+    case .drizzle:
+      return "Drizzle"
+    case .rain:
+      return "Rain"
+    case .heavyRain:
+      return "Heavy Rain"
+    case .snow:
+      return "Snow"
+    case .sleet:
+      return "Sleet"
+    case .hazeDay, .hazeNight:
+      return "Haze"
+    case .fog:
+      return "Fog"
+    case .dust:
+      return "Dust"
+    case .clouds:
+      return "Clouds"
+    case .squalls:
+      return "Wind"
+    case .tornado:
+      return "Tornado"
+    case .clearSkyDay, .clearSkyNight:
+      return "Clear Sky"
+    case .fewCloudsDay, .fewCloudsNight:
+      return "Few Clouds"
+    }
+  }
+  var systemName: String {
+    switch self {
+    case .thunderstorm:
+      return "cloud.bolt.fill"
+    case .thunderstormRain:
+      return "cloud.bolt.rain.fill"
+    case .drizzle:
+      return "cloud.drizzle.fill"
+    case .rain:
+      return "cloud.rain.fill"
+    case .heavyRain:
+      return "cloud.heavyrain.fill"
+    case .snow:
+      return "cloud.snow.fill"
+    case .sleet:
+      return "cloud.hail.fill"
+    case .hazeDay:
+      return "sun.haze.fill"
+    case .hazeNight:
+      return "moon.haze.fill"
+    case .fog:
+      return "cloud.fog.fill"
+    case .dust:
+      return "sun.dust"
+    case .clouds:
+      return "smoke.fill"
+    case .squalls:
+      return "wind"
+    case .tornado:
+      return "tornado"
+    case .clearSkyDay:
+      return "sun.max.fill"
+    case .clearSkyNight:
+      return "moon.fill"
+    case .fewCloudsDay:
+      return "cloud.sun.fill"
+    case .fewCloudsNight:
+      return "cloud.moon.fill"
+    }
+  }
 }

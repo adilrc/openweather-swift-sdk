@@ -7,17 +7,17 @@
 
 import Foundation
 
-struct OWSnow: Codable {
+public struct OWSnow: Codable {
 
   /// Snow volume for the last hour
   ///
   /// Unit: mm
-  var lastHourVolume: Double?
+  public var lastHourVolume: Double?
 
   /// Snow volume for the last 3 hours
   ///
   /// Unit: mm
-  var lastThreeHourVolume: Double?
+  public var lastThreeHourVolume: Double?
 
   enum CodingKeys: String, CodingKey {
     case lastHourVolume = "1h"

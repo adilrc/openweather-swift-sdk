@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum OWIconKey: String, Codable {
+public enum OWIconKey: String, Codable {
   case clearSkyDay = "01d"
   case fewCloudsDay = "02d"
   case scatteredCloudsDay = "03d"
