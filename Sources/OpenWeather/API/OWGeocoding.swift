@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol OWGeocoding {
+public protocol OWGeocoding {
   func directGeocoding(_ locationName: String) async throws -> OWGeocodingResponse
 }
