@@ -28,7 +28,7 @@ extension OpenWeather: OWWeatherProvider {
     logger.info(
       "Weather requested for coordinates: \(coordinates.latitude), \(coordinates.longitude).")
 
-    let urlConfiguration = OWURLConfiguration(token: token, coordinates: coordinates)
+    let urlConfiguration = OWURLConfiguration(token: token, coordinates: coordinates, unitType: "metric")
     let url = try OWURL.weather(configuration: urlConfiguration).url
     let urlRequest = URLRequest(url: url)
 
@@ -43,8 +43,23 @@ extension OpenWeather: OWWeatherProvider {
       "Five day forecast requested for coordinates: \(coordinates.latitude), \(coordinates.longitude)."
     )
 
-    let urlConfiguration = OWURLConfiguration(token: token, coordinates: coordinates)
+    let urlConfiguration = OWURLConfiguration(token: token, coordinates: coordinates, unitType: "metric")
     let url = try OWURL.forecast(configuration: urlConfiguration).url
+    let urlRequest = URLRequest(url: url)
+
+    return try await requestHandler.perform(urlRequest, urlSession: URLSession.shared)
+  }
+}
+
+extension OpenWeather: OWGeocoding {
+  ///Direct geocoding allows to get geographical coordinates by using name of the location (city name or area name).
+  func directGeocoding(_ locationName: String) async throws -> OWGeocodingResponse {
+    logger.info(
+      "Geocoding requested for search input: \(locationName)"
+    )
+
+    let urlConfiguration = OWURLConfiguration(token: token, locationName: locationName)
+    let url = try OWURL.directGeocoding(configuration: urlConfiguration).url
     let urlRequest = URLRequest(url: url)
 
     return try await requestHandler.perform(urlRequest, urlSession: URLSession.shared)
