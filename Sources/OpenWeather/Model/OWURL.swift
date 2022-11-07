@@ -48,7 +48,7 @@ struct OWURLConfiguration {
 enum OWURL {
 
   private static let baseURL = URL(string: "https://api.openweathermap.org/data/2.5")
-  private static let geoURL = URL(string: "http://api.openweathermap.org/geo/1.0")
+  private static let geoURL = URL(string: "https://api.openweathermap.org/geo/1.0")
 
   /// https://api.openweathermap.org/data/2.5/weather?appid={{api_key}}&units=metric&lat=18.015484&lon=13.216523
   case weather(configuration: OWURLConfiguration)
