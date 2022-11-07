@@ -27,7 +27,7 @@ struct OWURLConfiguration {
     ]
     
     if let coordinates {
-      queryItems.append(contentsOf:       [
+      queryItems.append(contentsOf: [
         URLQueryItem(name: "lat", value: "\(coordinates.latitude)"),
         URLQueryItem(name: "lon", value: "\(coordinates.longitude)")
       ])
@@ -38,7 +38,10 @@ struct OWURLConfiguration {
     }
     
     if let locationName {
-      queryItems.append(.init(name: "q", value: locationName))
+      queryItems.append(contentsOf: [
+        .init(name: "q", value: locationName),
+        .init(name: "limit", value: "5")
+      ])
     }
     
     return queryItems
