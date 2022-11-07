@@ -12,6 +12,9 @@ public struct OWBulkWeatherResponse: Codable {
   /// The list of weather response.
   public let list: [OWSimpleWeatherResponse]
 
+  /// The context city for the bulk weather request.
+  public var city: OWCity
+  
   /// Response status
   ///
   /// - Note: Unlike for the simple weather response, the Open Weather API provides here a `String` for the response code instead of an `Int`
@@ -21,7 +24,7 @@ public struct OWBulkWeatherResponse: Codable {
   private var message: String?
 
   enum CodingKeys: String, CodingKey {
-    case list, message
+    case list, message, city
     case responseCode = "cod"
   }
 
@@ -37,6 +40,8 @@ public struct OWBulkWeatherResponse: Codable {
     }
 
     list = try values.decode([OWSimpleWeatherResponse].self, forKey: .list)
+    city = try values.decode(OWCity.self, forKey: .city)
+    
     self.responseCode = responseCode
     self.message = try? values.decode(
       String.self,
