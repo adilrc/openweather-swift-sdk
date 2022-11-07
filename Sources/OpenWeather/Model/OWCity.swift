@@ -13,6 +13,11 @@ public struct OWCity: Codable {
   public var timeZone: TimeZone?
   public var sunrise: Date?
   public var sunset: Date?
+  
+  enum CodingKeys: String, CodingKey {
+    case name, country, sunrise, sunset
+    case timeZone = "timezone"
+  }
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
