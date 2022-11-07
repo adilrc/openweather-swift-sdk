@@ -53,7 +53,7 @@ extension OpenWeather: OWWeatherProvider {
 
 extension OpenWeather: OWGeocoding {
   ///Direct geocoding allows to get geographical coordinates by using name of the location (city name or area name).
-  public func directGeocoding(_ locationName: String) async throws -> OWGeocodingResponse {
+  public func directGeocoding(_ locationName: String) async throws -> [OWGeocodingResponse] {
     logger.info(
       "Geocoding requested for search input: \(locationName)"
     )
