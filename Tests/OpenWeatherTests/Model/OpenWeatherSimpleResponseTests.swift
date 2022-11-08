@@ -46,15 +46,79 @@ final class OpenWeatherSimpleResponseTests: XCTestCase {
     }
     
     func testFetchingSimpleWeatherResponseInvalid() async throws {
-        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid)
+        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid401)
         
         do {
             let weather = try await provider.weather(coordinates: .init(latitude: 0, longitude: 0))
             
             XCTAssertEqual(weather.responseCode, 401)
         } catch {
-            XCTAssertTrue(error is OWError)
+            guard let error = error as? OWError else {
+                XCTFail()
+                return
+            }
             XCTAssertEqual(error.localizedDescription, OWError.invalidAPIKey.localizedDescription)
+            XCTAssertEqual(error.recoverySuggestion, OWError.invalidAPIKey.recoverySuggestion)
+        }
+        
+        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid204)
+        
+        do {
+            let weather = try await provider.weather(coordinates: .init(latitude: 0, longitude: 0))
+            
+            XCTAssertEqual(weather.responseCode, 204)
+        } catch {
+            guard let error = error as? OWError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(error.localizedDescription, OWError.noContent.localizedDescription)
+            XCTAssertEqual(error.recoverySuggestion, OWError.noContent.recoverySuggestion)
+        }
+        
+        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid404)
+        
+        do {
+            let weather = try await provider.weather(coordinates: .init(latitude: 0, longitude: 0))
+            
+            XCTAssertEqual(weather.responseCode, 404)
+        } catch {
+            guard let error = error as? OWError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(error.localizedDescription, OWError.notFound.localizedDescription)
+            XCTAssertEqual(error.recoverySuggestion, OWError.notFound.recoverySuggestion)
+        }
+        
+        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid429)
+        
+        do {
+            let weather = try await provider.weather(coordinates: .init(latitude: 0, longitude: 0))
+            
+            XCTAssertEqual(weather.responseCode, 429)
+        } catch {
+            guard let error = error as? OWError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(error.localizedDescription, OWError.tooManyRequests.localizedDescription)
+            XCTAssertEqual(error.recoverySuggestion, OWError.tooManyRequests.recoverySuggestion)
+        }
+        
+        await provider.updateJSONResponse(with: OWResponsesMock.simpleWeatherResponseInvalid500)
+        
+        do {
+            let weather = try await provider.weather(coordinates: .init(latitude: 0, longitude: 0))
+            
+            XCTAssertEqual(weather.responseCode, 500)
+        } catch {
+            guard let error = error as? OWError else {
+                XCTFail()
+                return
+            }
+            XCTAssertEqual(error.localizedDescription, OWError.unknown(code: 500, message: "Server returned error.").localizedDescription)
+            XCTAssertEqual(error.recoverySuggestion, OWError.unknown(code: 500, message: "Server returned error.").recoverySuggestion)
         }
     }
     

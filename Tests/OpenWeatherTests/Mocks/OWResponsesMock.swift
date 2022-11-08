@@ -61,11 +61,40 @@ enum OWResponsesMock {
         return try! JSONDecoder().decode(OWSimpleWeatherResponse.self, from: data)
     }()
     
-    static let simpleWeatherResponseInvalid: String =
+    static let simpleWeatherResponseInvalid204: String =
+    """
+    {
+        "cod": 204,
+    }
+    """
+    
+    static let simpleWeatherResponseInvalid401: String =
     """
     {
         "cod": 401,
         "message": "Invalid API key. Please see https://openweathermap.org/faq#error401 for more info."
+    }
+    """
+    
+    static let simpleWeatherResponseInvalid404: String =
+    """
+    {
+        "cod": 404,
+    }
+    """
+    
+    static let simpleWeatherResponseInvalid429: String =
+    """
+    {
+        "cod": 429,
+    }
+    """
+    
+    static let simpleWeatherResponseInvalid500: String =
+    """
+    {
+        "cod": 500,
+        "message": "Server returned error."
     }
     """
     
@@ -1607,6 +1636,51 @@ enum OWResponsesMock {
     static let bulkWeatherResponseLondonObject: OWBulkWeatherResponse = {
         let data = Self.bulkWeatherResponseLondon.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
         return try! JSONDecoder().decode(OWBulkWeatherResponse.self, from: data)
+    }()
+    
+    static let directGeocodingResponseParis: String = """
+[
+    {
+        "name": "Paris",
+        "lat": 48.8588897,
+        "lon": 2.3200410217200766,
+        "country": "FR",
+        "state": "Ile-de-France"
+    },
+    {
+        "name": "Paris",
+        "lat": 48.8534951,
+        "lon": 2.3483915,
+        "country": "FR",
+        "state": "Ile-de-France"
+    },
+    {
+        "name": "Paris",
+        "lat": 33.6617962,
+        "lon": -95.555513,
+        "country": "US",
+        "state": "Texas"
+    },
+    {
+        "name": "Paris",
+        "lat": 38.2097987,
+        "lon": -84.2529869,
+        "country": "US",
+        "state": "Kentucky"
+    },
+    {
+        "name": "Paris",
+        "lat": 48.8588897,
+        "lon": 2.3200410217200766,
+        "country": "FR",
+        "state": "Ile-de-France"
+    }
+]
+"""
+    
+    static let directGeocodingResponseParisObject: [OWGeocodingResponse] = {
+        let data = Self.directGeocodingResponseParis.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
+        return try! JSONDecoder().decode([OWGeocodingResponse].self, from: data)
     }()
 }
 

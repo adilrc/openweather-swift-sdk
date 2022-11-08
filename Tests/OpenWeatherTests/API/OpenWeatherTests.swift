@@ -19,7 +19,7 @@ final class OpenWeatherTests: XCTestCase {
 
    
     func testFetchingWeather() async throws {
-        await requestHandler.setMode(.simple)
+        await requestHandler.setMode(.weather)
         
         let weather = try await openWeather.weather(coordinates: .init(latitude: 0, longitude: 0))
         
@@ -27,10 +27,20 @@ final class OpenWeatherTests: XCTestCase {
     }
     
     func testFetchingFiveDayForecast() async throws {
-        await requestHandler.setMode(.bulk)
+        await requestHandler.setMode(.bulkWeather)
         
         let forecast = try await openWeather.fiveDayforecast(coordinates: .init(latitude: 0, longitude: 0))
         
         XCTAssertEqual(forecast.responseCode, "200")
+    }
+  
+    func testDirectGeocoding() async throws {
+        await requestHandler.setMode(.directGeocoding)
+        
+        let response = try await openWeather.directGeocoding("Paris")
+        
+        let expectedResponse = OWResponsesMock.directGeocodingResponseParisObject
+        XCTAssertEqual(response.count, expectedResponse.count)
+        XCTAssertEqual(response.first?.name, "Paris")
     }
 }

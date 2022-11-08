@@ -97,6 +97,7 @@ enum OWIconStore {
       return "Few Clouds"
     }
   }
+
   var systemName: String {
     switch self {
     case .thunderstorm:

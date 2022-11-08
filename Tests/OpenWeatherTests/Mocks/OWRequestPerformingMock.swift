@@ -10,11 +10,12 @@ import Foundation
 
 actor OWRequestPerformerMock: OWRequestPerforming {
     enum Mode {
-        case simple
-        case bulk
+        case weather
+        case bulkWeather
+        case directGeocoding
     }
     
-    private var mode: Mode = .simple
+    private var mode: Mode = .weather
     
     func setMode(_ mode: Mode) {
         self.mode = mode
@@ -22,10 +23,12 @@ actor OWRequestPerformerMock: OWRequestPerforming {
     
     func perform<Object>(_ request: URLRequest, urlSession: URLSession = URLSession.shared) async throws -> Object where Object : Decodable {
         switch mode {
-        case .simple:
+        case .weather:
             return OWResponsesMock.simpleWeatherResponseLondonObject as! Object
-        case .bulk:
+        case .bulkWeather:
             return OWResponsesMock.bulkWeatherResponseLondonObject as! Object
+        case .directGeocoding:
+            return OWResponsesMock.directGeocodingResponseParisObject as! Object
         }
     }
 }
