@@ -8,9 +8,9 @@
 import Foundation
 
 public protocol OWIconProvider {
-  /// Returns the system item of the weather icon to be used with `SFSymbol`
-  var weatherIconSystemName: String { get }
-    
+    /// Returns the system item of the weather icon to be used with `SFSymbol`
+    var weatherIconSystemName: String { get }
+
     /// Returns the weather icon accessibility description
     var weatherIconAccessibilityDescription: String? { get }
 }

@@ -9,29 +9,29 @@ import Foundation
 
 public struct OWWind: Codable {
 
-  /// The wind speed.
-  ///
-  /// Units:
-  /// - Default: meter/sec
-  /// - Metric: meter/sec
-  /// - Imperial: miles/hour
-  public var speed: Double?
+    /// The wind speed.
+    ///
+    /// Units:
+    /// - Default: meter/sec
+    /// - Metric: meter/sec
+    /// - Imperial: miles/hour
+    public var speed: Double?
 
-  /// The wind direction.
-  ///
-  /// Unit: degrees
-  public var direction: Int?
+    /// The wind direction.
+    ///
+    /// Unit: degrees
+    public var direction: Int?
 
-  /// The wind gust.
-  ///
-  /// Units:
-  /// - Default: meter/sec
-  /// - Metric: meter/sec
-  /// - Imperial: miles/hour
-  public var gust: Double?
+    /// The wind gust.
+    ///
+    /// Units:
+    /// - Default: meter/sec
+    /// - Metric: meter/sec
+    /// - Imperial: miles/hour
+    public var gust: Double?
 
-  enum CodingKeys: String, CodingKey {
-    case speed, gust
-    case direction = "deg"
-  }
+    enum CodingKeys: String, CodingKey {
+        case speed, gust
+        case direction = "deg"
+    }
 }
