@@ -6,9 +6,23 @@
 //
 
 import Foundation
-import OpenWeather
 
-enum OWResponsesMock {
+public enum OWResponsesMock {
+    public static let simpleWeatherResponseLondonObject: OWSimpleWeatherResponse = {
+        let data = Self.simpleWeatherResponseLondon.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
+        return try! JSONDecoder().decode(OWSimpleWeatherResponse.self, from: data)
+    }()
+    
+    public static let directGeocodingResponseParisObject: [OWGeocodingResponse] = {
+        let data = Self.directGeocodingResponseParis.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
+        return try! JSONDecoder().decode([OWGeocodingResponse].self, from: data)
+    }()
+    
+    public static let bulkWeatherResponseLondonObject: OWBulkWeatherResponse = {
+        let data = Self.bulkWeatherResponseLondon.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
+        return try! JSONDecoder().decode(OWBulkWeatherResponse.self, from: data)
+    }()
+    
     static let simpleWeatherResponseLondon: String =
 """
 {
@@ -55,11 +69,6 @@ enum OWResponsesMock {
     "cod": 200
 }
 """
-    
-    static let simpleWeatherResponseLondonObject: OWSimpleWeatherResponse = {
-        let data = Self.simpleWeatherResponseLondon.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
-        return try! JSONDecoder().decode(OWSimpleWeatherResponse.self, from: data)
-    }()
     
     static let simpleWeatherResponseInvalid204: String =
     """
@@ -1633,11 +1642,6 @@ enum OWResponsesMock {
     }
     """
     
-    static let bulkWeatherResponseLondonObject: OWBulkWeatherResponse = {
-        let data = Self.bulkWeatherResponseLondon.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
-        return try! JSONDecoder().decode(OWBulkWeatherResponse.self, from: data)
-    }()
-    
     static let directGeocodingResponseParis: String = """
 [
     {
@@ -1677,10 +1681,5 @@ enum OWResponsesMock {
     }
 ]
 """
-    
-    static let directGeocodingResponseParisObject: [OWGeocodingResponse] = {
-        let data = Self.directGeocodingResponseParis.data(using: .utf8) ?? { fatalError("JSON string cannot be encoded to Data.") }()
-        return try! JSONDecoder().decode([OWGeocodingResponse].self, from: data)
-    }()
 }
 
